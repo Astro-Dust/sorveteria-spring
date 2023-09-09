@@ -1,0 +1,52 @@
+body {
+    background-color: #EEAFC5;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    background-color: #F2E9D3;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    box-shadow: 1px 10px 10px rgba(0, 0, 0, 0.333);
+    border-radius: 10px;
+}
+
+form > h1 {
+    color: #C4886F;
+    font-weight: bold;
+}
+
+.sorvete-escolha {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sorvete-escolha > input {
+    outline: none;
+    border: none;
+    padding: 0px 10px;
+    margin-bottom: -12px;
+    height: 30px;
+    box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.333);
+    border-radius: 10px;
+}
+
+.sorvete-escolha > button {
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    background-color: #EEAFC5;
+    font-weight: bold;
+    height: 30px;
+    width: 100px;
+}
+
+.sorvete-escolha > button:hover {
+    background-color: #c990a4;
+    font-weight: bold;
+}

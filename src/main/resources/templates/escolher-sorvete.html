@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="" th:href="@{/css/escolher-sorvete-style.css}">
+    <link rel="shortcut icon" href="" type="image/x-icon" th:href="@{/icon/icecream-icon.ico}">
+    <title>Escolha seu sorvete</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <form action="/processar-formulario" method="POST">
+            <h1>Selecione seu sorvete!</h1>
+            <h3>Temos os seguintes sabores</h3>
+            <ul>
+                <li>Abacaxi &#x1F34D</li>
+                <li>Baunilha &#x1F366</li>
+                <li>Chocolate &#x1F36B</li>
+                <li>Flocos &#x1F366</li>
+                <li>Limão &#x1F34B</li>
+                <li>Maracujá &#x1F34A</li>
+                <li>Morango &#x1F353</li>
+            </ul>
+
+            <div class="sorvete-escolha">
+                <input type="text" placeholder="Faça sua escolha!" name="sorveteInput"><br><br>
+                <button type="submit">Escolher</button>
+            </div>
+        </form>
+    </div>
+
+</body>
+
+</html>
