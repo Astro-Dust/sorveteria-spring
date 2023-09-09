@@ -3,9 +3,14 @@ package com.moonlit.sorveteria.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.text.Normalizer;
+import java.util.regex.Pattern;
+
 @Controller
+@RequestMapping(produces = "text/html;charset=UTF-8")
 public class SorveteriaController {
 
     @GetMapping("/escolher-sorvete")
@@ -14,29 +19,30 @@ public class SorveteriaController {
     }
 
     @PostMapping("/processar-formulario")
-    public String processarFormulario(@RequestParam String sorveteInput) {
+    public String processarFormulario(@RequestParam String saborInput) {
 
-        switch (sorveteInput.toLowerCase()) {
-            case "abacaxi":
-                return "redirect:/paginas-sorvetes/abacaxi";
-            case "baunilha":
-                return "redirect:/paginas-sorvetes/baunilha";
-            case "chocolate":
-                return "redirect:/paginas-sorvetes/chocolate";
-            case "flocos":
-                return "redirect:/paginas-sorvetes/flocos";
-            case "limão":
-            case "limao":
-                return "redirect:/paginas-sorvetes/limao";
-            case "maracuja":
-            case "maracujá":
-                return "redirect:/paginas-sorvetes/maracuja";
-            case "morango":
-                return "redirect:/paginas-sorvetes/morango";
-            default:
-                return "escolher-sorvete";
+        String saborNormalizado = normalizeString(saborInput);
+
+        String[] sabores = {"abacaxi", "baunilha", "chocolate", "flocos", "limao", "limão", "maracuja", "maracujá", "morango"};
+
+        for (String sabor : sabores) {
+            if (normalizeString(sabor).equalsIgnoreCase(saborNormalizado)) {
+                return "redirect:/paginas-sorvetes/" + sabor;
+            }
         }
+
+        return "escolher-sorvete";
+
     }
+
+    private String normalizeString(String input) {
+        // remove acentos e caracteres especiais
+        String normalized = Normalizer.normalize(input, Normalizer.Form.NFD);
+        Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
+        return pattern.matcher(normalized).replaceAll("").toLowerCase();
+    }
+
+
 
     @GetMapping("/paginas-sorvetes/abacaxi")
     public String abacaxi() {
