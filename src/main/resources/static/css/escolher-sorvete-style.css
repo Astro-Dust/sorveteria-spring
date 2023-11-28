@@ -47,6 +47,7 @@ form > h1 {
     gap: 20px;
     margin-top: 20px;
     margin-bottom: -10px;
+    font-weight: normal;
 }
 
 .sorvete-escolha > button:hover {

@@ -13,6 +13,12 @@ import java.util.regex.Pattern;
 @RequestMapping(produces = "text/html;charset=UTF-8")
 public class SorveteriaController {
 
+    // redireciona para home quando clicar no botão "Escolher outro"
+    @GetMapping("/")
+    public String redirectToHome() {
+        return "redirect:/escolher-sorvete";
+    }
+
     @GetMapping("/escolher-sorvete")
     public String home() {
         return "escolher-sorvete";
